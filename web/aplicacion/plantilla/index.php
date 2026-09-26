@@ -1,8 +1,7 @@
 <?php
-include_once(dirname(__FILE__) . "/cabecera.php");
+include_once(dirname(__FILE__) . "/../../cabecera.php");
 //controlador
 
-$usuario=getenv("MYSQL_USER");
 
 //dibuja la plantilla de la vista
 inicioCabecera("APLICACION PRIMER TRIMESTRE");
@@ -22,8 +21,6 @@ function cuerpo()
 {
 ?>
     <br><br>
-    Hola, estás en Index.php wecwecw
-    <br>
-    <a href="/aplicacion/plantilla/index.php">ir a otro index</a>
+    hola estamos en el Index rerett
 <?php
 }
