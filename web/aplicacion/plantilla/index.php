@@ -126,14 +126,14 @@ function cuerpo()
 
         $var=0b1010 & 0b0101;
         $var=0b1010 | 0b0101;
-
+ 
         $var=7;
         if($var==1)
             $cadena="uno";
-        elseif($var==2);
+        elseif($var==2)
             $cadena="dos";
          else
-                $cadena="otro";
+            $cadena="otro";
 
     ?>
 <?php
