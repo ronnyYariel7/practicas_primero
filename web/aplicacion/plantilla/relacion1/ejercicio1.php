@@ -60,12 +60,39 @@ $numeroBinario = "0b11011";
    echo $num5." a Hexadecimal es: ".dechex($num5)."<br> ".PHP_EOL;
    echo $num6." a Hexadecimal es: ".dechex($num6)."<br> ".PHP_EOL;
    ?>
-   <h4>Decimal a base 4</h4>
+   <h4>número en base 4</h4>
    <?php
-   $decimal="0b1011101";
+   $numeroBase4="321";
+
+   $numBase8=base_convert($numeroBase4,4,8);
+   echo $numeroBase4. " a base 4: ".$numBase8." <br>";
+   ?>
+   <h4>Decimal , octal y hexadecimal</h4>
+   <?php
+   $decimal="1011101";
      $decimal=bindec($decimal);
    $numBase4=base_convert($decimal,10,4);
-   echo $decimal. " a base 4".$numBase4." <br>";
+   echo $decimal. " a base 4: ".$numBase4." <br>";
+
+   $octal="37";
+
+   $numOctal=base_convert($octal,8,4);
+   echo "Octal ".$octal." en base 4 :". $numOctal."<br>";
+
+   $hex="2A";
+   $numHex=base_convert($hex,16,4);
+    echo "Hexadecimal ".$hex." en  base 4 :". $numHex."<br>";
+   ?>
+   <h4>Funcion rand</h4>
+   <?php
+   $aleatorio = rand(1, 100);
+   echo "Número aleatorio (1 al 100): " . $aleatorio . "<br>";
+    ?>
+   <h4>Funcion abs</h4>
+   <?php
+   $absoluto = abs(-15);
+   echo "Valor absoluto de -15: " . $absoluto . "<br>";
+
    
 
   

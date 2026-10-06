@@ -1,94 +1,108 @@
 @charset "UTF8";
 
 body {
-    background-color: cyan;
+    background-color: #92beff;
     font-size: 16px;
+    font-family: Arial, sans-serif;
 }
 
 
-#documento{
-    margin: 0 auto;
-    background-color: #deffbf;
+#documento {
+    margin: 20px auto;
+    background-color: #ffffff;
     width: 700px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
+    overflow: hidden;
 }
-#cabecera{
-    background-color: #14e737;
-    padding: 5px;
+
+#cabecera {
+    background-color: #1e293b; 
+    color: #ffffff;
+    padding: 10px;
 }
-#cabecera #logo{
+
+#cabecera #logo {
     width: 75px;
     height: 50px;
 }
 
-#cabecera #titulo{
+#cabecera #titulo {
     font-size: 1.3em;
     font-style: italic;
+    color: #f8fafc;
 }
 
-.boton{
-    background-color: blue;
-    color:white;
-    border:thin black solid;
+.boton {
+    background-color: #2563eb; 
+    color: white;
+    border: 1px solid #1d4ed8;
+    border-radius: 4px;
+    padding: 4px 8px;
 }
 
-.boton a{
+.boton a {
     text-decoration: none;
-    color:white;
+    color: white;
 }
 
-.boton a:visited{
+.boton a:visited {
     text-decoration: none;
-    color:white;
+    color: white;
 }
 
-.boton a:hover{
-    background-color:cyan;
-    color: black;
+.boton a:hover {
+    background-color: #1d4ed8;
+    color: #ffffff;
 }
 
-.boton:hover{
-    background-color:cyan;
-    color: black;
+.boton:hover {
+    background-color: #1d4ed8;
+    color: #ffffff;
 }
 
-.tabla{
+.tabla {
     width: 100%;
     border-collapse: collapse;
     border: none;
     background-color: white;
 }
 
-.tabla th{
-    background-color: teal;
-    color: blue;
-}
-.tabla tr.par{
-    background-color: black;
-    color: white;
-    
+.tabla th {
+    background-color: #334155; 
+    color: #ffffff;
+    padding: 8px;
 }
 
-.tabla tr.impar{
-    
+.tabla tr.par {
+    background-color: #f1f5f9; 
+    color: #0f172a;
 }
 
-#pie{
-    background-color: #81e714;
-    color: blue;
-    font-size: 1.5 em;
-    padding: 5px;
+.tabla tr.impar {
+    background-color: #ffffff;
+    color: #0f172a;
 }
 
-.for_texto{
-    border:blue thin solid;
-    background-color: white;
-    padding: 2px;
-    margin:2px;
+#pie {
+    background-color: #0f172a; 
+    color: #94a3b8;
+    font-size: 1.2em;
+    padding: 10px;
+}
+
+.for_texto {
+    border: 1px solid #cbd5e1;
+    background-color: #ffffff;
+    padding: 4px;
+    margin: 2px;
     border-radius: 4px;
 }
-.error{
-    background-color: white;
-    color:red;
-    border:thin solid red;
-    padding:5px;
+
+.error {
+    background-color: #fef2f2;
+    color: #dc2626;
+    border: 1px solid #fca5a5;
+    padding: 5px;
+    border-radius: 4px;
 }

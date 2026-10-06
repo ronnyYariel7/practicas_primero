@@ -69,6 +69,7 @@ function inicioCuerpo($cabecera)
                     <li><a href="/aplicacion\plantilla/index.php">Ejemplos básicos</a></li>
                      <li><a href="/aplicacion\plantilla/pasopar.php">Funcionamiento básico</a></li>
                      <li> <a href="/aplicacion\plantilla/relacion1/ejercicio1.php">Ejercicio 1</a>
+                     <li> <a href="/aplicacion\plantilla/relacion1/ejercicio2.php">Ejercicio 2</a>
                  </ul> 
                 
             </div>
