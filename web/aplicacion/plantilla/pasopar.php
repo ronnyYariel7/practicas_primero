@@ -45,7 +45,33 @@ function cuerpo($bas,$ot)
 echo "Mi nombre es {$bas["nombre"]} de {$bas["edad"]}años".PHP_EOL;
 echo "Con otros datos {$ot}";
 
+$miArray[3]=34;
+$miArray[7]=1234;
+$miArray["nueva"]=54;
+$total=0;
 
+    $final=count(($miArray));
+    for($i=0;$i<count($miArray);$i++){
+        if(!isset($miArray[$i]))
+            $total+=$miArray[$i];
+            else
+                $final++;
+    }
+
+    $miArray["nueva"]=24; 
+
+    $total=0;
+    $total1=0;
+    foreach($miArray as $i=>$valor){
+
+        $total+=$miArray[$i];
+        $total1+=$valor;
+    }
+
+    
+    function prueba($a){
+        
+    }
 
 }
 
