@@ -2,6 +2,7 @@
 
 function paginaError($mensaje)
 {
+
   header("HTTP/1.0 404 $mensaje");
   inicioCabecera("PRACTICA");
   finCabecera();
@@ -48,7 +49,7 @@ function finCabecera()
 <?php   
 }
 
-function inicioCuerpo($cabecera)
+function inicioCuerpo($cabecera,array $ubicacion=[])
 {
     global $acceso;
 
@@ -70,13 +71,42 @@ function inicioCuerpo($cabecera)
                      <li><a href="/aplicacion\plantilla/pasopar.php">Funcionamiento básico</a></li>
                      <li> <a href="/aplicacion\plantilla/relacion1/ejercicio1.php">Ejercicio 1</a>
                      <li> <a href="/aplicacion\plantilla/relacion1/ejercicio2.php">Ejercicio 2</a>
+                     <li> <a href="/aplicacion\plantilla/relacion1/ejercicio3.php">Ejercicio 3</a>
                  </ul> 
                 
             </div>
             
-            <div>
+            <div class="barraUbicacion" >
+                <?php 
+    
+                        foreach($ubicacion as $elemento){
+
+                             if(isset($elemento["ENLACE"]))
+                                { 
+                             echo "<a href='{$elemento["ENLACE"]}'>";
+                             }
+                            echo $elemento["TEXTO"]; 
+                       
+    
+                            if(isset($elemento["ENLACE"]))
+                                {
+                                    echo "</a>";
+                                }
+                            if(isset($elemento["ADICIONAL"]))
+                                    echo $elemento["ADICIONAL"];
+                                else
+                                    echo "&nbsp;&nbsp;";
+                            
+                            
+
+                            
+                        }
+                        
+                    }
+                ?>
+            </div>
 <?php   
-}
+
 
 function finCuerpo()
 {

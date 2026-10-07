@@ -33,6 +33,10 @@ body {
     color: #f8fafc;
 }
 
+#barraUbicacion{
+    background-color: #698163;
+}
+
 .boton {
     background-color: #2563eb; 
     color: white;

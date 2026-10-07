@@ -40,7 +40,7 @@ $usuario=getenv("MYSQL_USER");
 inicioCabecera("APLICACION PRIMER TRIMESTRE");
 cabecera();
 finCabecera();
-inicioCuerpo("Ejercicio 1");
+inicioCuerpo("Ejercicio 2");
 cuerpo($datos,$numVeces);  //llamo a la vista
 finCuerpo();
 // **********************************************************

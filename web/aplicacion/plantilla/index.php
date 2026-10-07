@@ -1,13 +1,24 @@
 <?php 
 include_once(dirname(__FILE__) . "/../../cabecera.php");
 //controlador
+$barra=[
+    [
+    "TEXTO"=> "inicio",
+    "ENLACE"=>"/index.php",
+    ],
+    [
+        "TEXTO"=> "Pruebas"
+    ],
+
+];
+
 
 
 //dibuja la plantilla de la vista
 inicioCabecera("APLICACION PRIMER TRIMESTRE");
 cabecera();
 finCabecera();
-inicioCuerpo("2DAW APLICACION");
+inicioCuerpo("2DAW APLICACION",$barra);
 cuerpo();  //llamo a la vista
 finCuerpo();
 // **********************************************************
@@ -71,7 +82,7 @@ function cuerpo()
 
         $var=1+true;
         $var=1+1.5;
-        $var=1+"1.5hola";
+       // $var=1+"1.5hola";
        // $var =1+"hola";
         //$var = 1+[];
 
