@@ -1,19 +1,23 @@
 <?php 
 include_once(dirname(__FILE__) . "/../../../cabecera.php");
 //controlador
-const FILAS=6;
+const FILAS=5;
 
-$array=[];
-function cadena(){
-    $cadena="";
+
+function rellenarArray(){
+
+    $array=[FILAS];
    for($i=0;$i<FILAS;$i++){
-     $array[$i]=($i);
-    for($a=0;$a<$i;$a++){
-        $cadena.=$array[$i]."&nbsp";
+    $array2=[];
+    for($a=0;$a<=$i;$a++){
+        $array2[$a]=($i+1);
     }
-    $cadena.="<br>";
+     $array[$i]=$array2;
+   
 }
-    return $cadena;
+
+return $array;
+    
 }
 
 
@@ -38,10 +42,21 @@ function cuerpo()
 {
    
 ?>
-   <h1>Ejercicio 3 . Rellenar posiciones de arrays.</h1>
+   <h1>Ejercicio 4 .Generar un array con los siguientes valores mostrándolos posteriormente con foreach. El array se
+debe generar usando bucles for.</h1>
    <?php
 
-    echo cadena();
+     $array=rellenarArray();
+
+     foreach($array as $elem){
+        
+        foreach($elem as $valor){
+              echo $valor;
+        }
+            echo "<br>";
+   
+   
+     }
    
 
 }
