@@ -39,6 +39,16 @@ function cuerpo()
     <?php 
         // esto es un comentario 
 
+
+        $cadena=date("d/m/Y H:i:s");   
+        
+        $hoy=new DateTime();
+        $cadena=$hoy->format('d/m/Y H:i:s');
+
+
+        //le sumo 2 dias, 15 horas , 30 minutos 
+        $hoy->add(new DateInterval("P2dT15H"));
+        
         echo "Hola esto es PHP";
 
         $var1=25;

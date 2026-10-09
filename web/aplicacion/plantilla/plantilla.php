@@ -74,6 +74,8 @@ function inicioCuerpo($cabecera,array $ubicacion=[])
                      <li> <a href="/aplicacion\plantilla/relacion1/ejercicio3.php">Ejercicio 3</a>
                      <li> <a href="/aplicacion\plantilla/relacion1/ejercicio4.php">Ejercicio 4</a>
                     <li> <a href="/aplicacion\plantilla/relacion1/ejercicio5.php">Ejercicio 5</a>
+                    <li> <a href="/aplicacion\plantilla/relacion1/ejercicio6.php">Ejercicio 6</a>
+                    <li> <a href="/aplicacion\plantilla/relacion1/ejercicio7.php">Ejercicio 7</a>
                  </ul> 
                 
             </div>
