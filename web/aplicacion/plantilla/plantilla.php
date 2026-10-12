@@ -66,16 +66,6 @@ function inicioCuerpo($cabecera,array $ubicacion=[])
             </div>
             <div id="barraMenu">
                 <ul>
-                    <li><a href="/index.php">Inicio</a></li>
-                    <li><a href="/aplicacion\plantilla/index.php">Ejemplos básicos</a></li>
-                     <li><a href="/aplicacion\plantilla/pasopar.php">Funcionamiento básico</a></li>
-                     <li> <a href="/aplicacion\plantilla/relacion1/ejercicio1.php">Ejercicio 1</a>
-                     <li> <a href="/aplicacion\plantilla/relacion1/ejercicio2.php">Ejercicio 2</a>
-                     <li> <a href="/aplicacion\plantilla/relacion1/ejercicio3.php">Ejercicio 3</a>
-                     <li> <a href="/aplicacion\plantilla/relacion1/ejercicio4.php">Ejercicio 4</a>
-                    <li> <a href="/aplicacion\plantilla/relacion1/ejercicio5.php">Ejercicio 5</a>
-                    <li> <a href="/aplicacion\plantilla/relacion1/ejercicio6.php">Ejercicio 6</a>
-                    <li> <a href="/aplicacion\plantilla/relacion1/ejercicio7.php">Ejercicio 7</a>
                  </ul> 
                 
             </div>

@@ -1,6 +1,42 @@
 <?php 
 include_once(dirname(__FILE__) . "/../../../cabecera.php");
 //controlador
+$barra=[
+    [
+    "TEXTO"=> "inicio",
+    "ENLACE"=>"/index.php"],
+    [
+        "TEXTO"=> "ejercicio1",
+        "ENLACE"=>"/aplicacion\plantilla/relacion1/ejercicio1.php"
+    ],
+    [
+        "TEXTO"=> "ejercicio2",
+        "ENLACE"=>"/aplicacion\plantilla/relacion1/ejercicio2.php"
+    ],
+    [
+        "TEXTO"=> "ejercicio3",
+        "ENLACE"=>"/aplicacion\plantilla/relacion1/ejercicio3.php"
+    ] ,
+    [
+        "TEXTO"=> "ejercicio4",
+        "ENLACE"=>"/aplicacion\plantilla/relacion1/ejercicio4.php"
+    ],
+    [
+        "TEXTO"=> "ejercicio5",
+        "ENLACE"=>"/aplicacion\plantilla/relacion1/ejercicio5.php"
+    ] ,
+    [
+        "TEXTO"=> "ejercicio6",
+        "ENLACE"=>"/aplicacion\plantilla/relacion1/ejercicio6.php"
+    ] ,
+    [
+        "TEXTO"=> "ejercicio7",
+        "ENLACE"=>"/aplicacion\plantilla/relacion1/ejercicio7.php"
+    ] ,
+     
+    
+];
+
 
 $vector=array();
 $vector[1]="esto es una cadena";
@@ -16,7 +52,7 @@ $usuario=getenv("MYSQL_USER");
 inicioCabecera("APLICACION PRIMER TRIMESTRE");
 cabecera();
 finCabecera();
-inicioCuerpo("Ejercicio 3");
+inicioCuerpo("Ejercicio 5",$barra);
 cuerpo($vector);  //llamo a la vista
 finCuerpo();
 // **********************************************************
@@ -30,7 +66,7 @@ function cuerpo($vector)
 {
    
 ?>
-   <h1>Ejercicio 4 .Mostrar mediante bucles foreach el contenido del array segun la salida.</h1>
+   <h1>Ejercicio 5 .Mostrar mediante bucles foreach el contenido del array segun la salida.</h1>
    <?php
    foreach($vector as $index=>$elem){
     $cadena="<br><br>";

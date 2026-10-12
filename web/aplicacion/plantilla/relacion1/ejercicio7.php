@@ -9,8 +9,51 @@ include_once(dirname(__FILE__) . "/../../../cabecera.php");
  */
 
 //controlador
+$barra=[
+    [
+    "TEXTO"=> "inicio",
+    "ENLACE"=>"/index.php"],
+    [
+        "TEXTO"=> "ejercicio1",
+        "ENLACE"=>"/aplicacion\plantilla/relacion1/ejercicio1.php"
+    ],
+    [
+        "TEXTO"=> "ejercicio2",
+        "ENLACE"=>"/aplicacion\plantilla/relacion1/ejercicio2.php"
+    ],
+    [
+        "TEXTO"=> "ejercicio3",
+        "ENLACE"=>"/aplicacion\plantilla/relacion1/ejercicio3.php"
+    ] ,
+    [
+        "TEXTO"=> "ejercicio4",
+        "ENLACE"=>"/aplicacion\plantilla/relacion1/ejercicio4.php"
+    ],
+    [
+        "TEXTO"=> "ejercicio5",
+        "ENLACE"=>"/aplicacion\plantilla/relacion1/ejercicio5.php"
+    ] ,
+    [
+        "TEXTO"=> "ejercicio6",
+        "ENLACE"=>"/aplicacion\plantilla/relacion1/ejercicio6.php"
+    ] ,
+    [
+        "TEXTO"=> "ejercicio7",
+        "ENLACE"=>"/aplicacion\plantilla/relacion1/ejercicio7.php"
+    ] ,
+     
+    
+];
 
 
+function restarDiferenteFormato($dia,$form){
+     
+    $fecha_nueva=date($form,strtotime($dia.'- 12 years -4 horus')) ;  
+
+    $cadena="<br>Fecha de hace 12 años y 4 horas menos 'd/m/y H:i:s': ".$fecha_nueva;
+
+    return $cadena;
+}
 
 
 $usuario=getenv("MYSQL_USER");
@@ -19,7 +62,7 @@ $usuario=getenv("MYSQL_USER");
 inicioCabecera("APLICACION PRIMER TRIMESTRE");
 cabecera();
 finCabecera();
-inicioCuerpo("Ejercicio 3");
+inicioCuerpo("Ejercicio 7",$barra);
 cuerpo();  //llamo a la vista
 finCuerpo();
 // **********************************************************
@@ -61,7 +104,7 @@ function cuerpo()
     <?php
     $dia=new DateTime("29-03-2024 12:45");
 
-    $cadena="Fecha actual y Hora actual formato 'd/m/y H:i:s': ".$dia->format('d/m/y H:i');
+    $cadena="Fecha actual 'd/m/y ': ".$dia->format('d/m/y');
 
     
     $cadena.="<br>Fecha actual y Hora actual formato 'd/m/y/w H:i:s': ".$dia->format('d/m/y/w H:i');
@@ -69,5 +112,17 @@ function cuerpo()
     $cadena.="<br>Fecha actual y Hora actual formato 'd/m/y/w H:i:s': ".$dia->format('d/m/y/w H:i:s');
 
     echo $cadena;
+
+    ?>
+     <h4>Mostrar los tres apartados anteriores para la fecha actual menos 12 días y 4 horas</h4>
+    <?php
+
+       $dia=date("d/m/Y H:i:s");
+
+    echo restarDiferenteFormato($dia,"d/m/Y ").PHP_EOL;
+
+   echo restarDiferenteFormato($dia,"d/m/y/w H:i").PHP_EOL;
+
+   echo restarDiferenteFormato($dia,"d/m/y/w H:i:s").PHP_EOL;
 
 }

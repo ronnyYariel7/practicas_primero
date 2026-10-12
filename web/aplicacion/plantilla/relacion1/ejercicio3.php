@@ -1,6 +1,42 @@
 <?php 
 include_once(dirname(__FILE__) . "/../../../cabecera.php");
 //controlador
+$barra=[
+    [
+    "TEXTO"=> "inicio",
+    "ENLACE"=>"/index.php"],
+    [
+        "TEXTO"=> "ejercicio1",
+        "ENLACE"=>"/aplicacion\plantilla/relacion1/ejercicio1.php"
+    ],
+    [
+        "TEXTO"=> "ejercicio2",
+        "ENLACE"=>"/aplicacion\plantilla/relacion1/ejercicio2.php"
+    ],
+    [
+        "TEXTO"=> "ejercicio3",
+        "ENLACE"=>"/aplicacion\plantilla/relacion1/ejercicio3.php"
+    ] ,
+    [
+        "TEXTO"=> "ejercicio4",
+        "ENLACE"=>"/aplicacion\plantilla/relacion1/ejercicio4.php"
+    ],
+    [
+        "TEXTO"=> "ejercicio5",
+        "ENLACE"=>"/aplicacion\plantilla/relacion1/ejercicio5.php"
+    ] ,
+    [
+        "TEXTO"=> "ejercicio6",
+        "ENLACE"=>"/aplicacion\plantilla/relacion1/ejercicio6.php"
+    ] ,
+    [
+        "TEXTO"=> "ejercicio7",
+        "ENLACE"=>"/aplicacion\plantilla/relacion1/ejercicio7.php"
+    ] ,
+     
+    
+];
+
 
 //Primera forma
 $array=[];
@@ -50,7 +86,7 @@ $usuario=getenv("MYSQL_USER");
 inicioCabecera("APLICACION PRIMER TRIMESTRE");
 cabecera();
 finCabecera();
-inicioCuerpo("Ejercicio 3");
+inicioCuerpo("Ejercicio 3",$barra);
 cuerpo($array,$array2,$array3);  //llamo a la vista
 finCuerpo();
 // **********************************************************
