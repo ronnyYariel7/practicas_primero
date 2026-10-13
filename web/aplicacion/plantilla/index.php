@@ -7,7 +7,8 @@ $barra=[
     "ENLACE"=>"/index.php",
     ],
     [
-        "TEXTO"=> "Pruebas"
+        "TEXTO"=> "cadenas",
+        "ENLACE"=> "C:/Web/Practicas-Primeros/web/aplicacion/plantilla/cadenas.php"
     ],
 
 ];

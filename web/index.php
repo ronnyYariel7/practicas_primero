@@ -5,6 +5,11 @@ $barra=[
     [
     "TEXTO"=> "inicio",
     "ENLACE"=>"/index.php"],
+      [
+        "TEXTO"=> "cadenas",
+        "ENLACE"=> "C:/Web/Practicas-Primeros/web/aplicacion/plantilla/cadenas.php"
+    ],
+
     [
         "TEXTO"=> "ejercicio1",
         "ENLACE"=>"/aplicacion\plantilla/relacion1/ejercicio1.php"
