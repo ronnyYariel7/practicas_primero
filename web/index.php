@@ -6,8 +6,8 @@ $barra=[
     "TEXTO"=> "inicio",
     "ENLACE"=>"/index.php"],
       [
-        "TEXTO"=> "cadenas",
-        "ENLACE"=> "C:/Web/Practicas-Primeros/web/aplicacion/plantilla/cadenas.php"
+        "TEXTO"=> "Relación 2",
+        "ENLACE"=> "C:/Web/Practicas-Primeros/web/aplicacion\plantilla/relacion2/index.php"
     ],
 
     [

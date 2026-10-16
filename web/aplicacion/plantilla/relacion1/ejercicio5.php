@@ -88,7 +88,4 @@ function cuerpo($vector)
 
     echo $cadena;
    }
-
-   
-
 }
