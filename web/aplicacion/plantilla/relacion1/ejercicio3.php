@@ -1,7 +1,7 @@
 <?php 
 include_once(dirname(__FILE__) . "/../../../cabecera.php");
 //controlador
-$barra=[
+$barra=[  // barra de menu
     [
     "TEXTO"=> "inicio",
     "ENLACE"=>"/index.php"],
@@ -58,7 +58,7 @@ $array2=array(1=>"cadena",16=>true,54=>104,34,"uno"=>"cadena",
 $array3=[1=>"cadena",16=>true,54=>104,34,"uno"=>"cadena",
                 "dos"=>true,"tres"=>1.345,"ultima"=>[1,34,"nueva"]];
 
-// Fubcion para leer los tres arrays
+// Función para leer los tres arrays
 
 function mostrarArrayVista(array $array){
 
