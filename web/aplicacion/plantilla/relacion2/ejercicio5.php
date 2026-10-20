@@ -51,9 +51,9 @@ de correo electrónico (formato aaaa@aaaa.aa).
 <?php
 
 // expresiones regulares 
-$patron_etiqueta = '/<[^>]+>/';
-$patron_numero   = '/\d+/';
-$patron_email    = '/\w+@\w+\.\w+/';
+$patron_etiqueta='/<[^>]+>/';
+$patron_numero= '/\d+/';
+$patron_email= '/\w+@\w+\.\w+/';
 
 // preg_match para comprobar el si cumple la expresion regular
 if (preg_match($patron_etiqueta, $cadena, $res, PREG_OFFSET_CAPTURE)) {
