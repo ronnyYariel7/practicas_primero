@@ -1,5 +1,7 @@
 <?php
 
+use LDAP\Result;
+
 /**
  * Funcion que agrega valores usando claves asosiativa
  * y cuenta las veces que la función fue llamada
@@ -50,8 +52,52 @@ function generarCadenas(int $longitud=10): bool{
     return true;
 
 }
+/**
+ * funcion que se le pasa como minimo tres parametros,
+ * 1, suma todos los operandos
+*2, al primer operando se restan el resto
+*3, multiplicación de todos los operandos.
+*En cualquier otro caso se suman los operandos que ocupan las posiciones pares y se restan
+*los de las posiciones impares (el primer operando es 1).
+ *
+ * @param integer $op
+ * @param integer $num
+ * @param integer $num2
+ * @param integer ...$resto
+ * @return integer
+ */
 
+function operaciones(int $op,int $num,int $num2, int ...$resto): int{
+    $resul=array_sum($resto); // función que suma los valores del array
 
+    if($op==1){$resul+=$num+$num2;}
+    else if($op==2){
+        $num-=$num2;
+        $resul=$num-$resul;
+    }
+    else if($op==3){
+         $resul=array_product($resto); //función que multiplica los valores del array
+         $resul*=$num;
+         $resul*=$num2;
+    }
+    else {
+        $resul=array_merge([$op,$num,$num2],$resto); // función que combina dos arrays
+        $sumPares=0;
+        $sumImpares=0;
+
+        for($i=0;$i<count($resul);$i++){
+            if($i!=0 && $i%2==0){
+                $sumPares+=$resul[$i];
+            }
+            else if($i!=0) $sumImpares+=$resul[$i];
+        }
+
+        $resul=$sumPares-$sumImpares;
+    }
+
+    return $resul;
+
+}
 
 
 ?>
