@@ -16,6 +16,21 @@ if($numero=doble($numero)===false)
         exit;
     }
 
+$n1=15;
+$otra="n1";
+$numero=$$otra;
+
+//variables funcion
+$otra="suma";
+$numero=$otra(1,2,3,4); 
+
+$s=function (int $a , int $b){
+    return $a+$b;
+};
+
+$numero=$s(3,20);
+
+
 
 //controlador
 $barra=[
@@ -52,7 +67,7 @@ function cuerpo()
 ?>
     <?php 
        
-
+  
     ?>
 <?php
 }
