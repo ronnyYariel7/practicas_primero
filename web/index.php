@@ -12,7 +12,12 @@ $barra=[
       [
         "TEXTO"=> "Relación 2",
         "ENLACE"=> "/aplicacion\plantilla/relacion2/index.php"
+    ],
+    [
+        "TEXTO"=> "Relación 3",
+        "ENLACE"=> "/aplicacion\plantilla/relacion3/index.php"
     ]
+    
     
 ];
 

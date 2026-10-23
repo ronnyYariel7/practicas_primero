@@ -13,7 +13,7 @@ if($numero===false)
     }
 if($numero=doble($numero)===false)
     {
-        exit;
+        exit;   
     }
 
 $n1=15;
@@ -27,6 +27,9 @@ $numero=$otra(1,2,3,4);
 $s=function (int $a , int $b){
     return $a+$b;
 };
+
+$s=fn(int $a,int $b)=>$a+$b;
+
 
 $numero=$s(3,20);
 

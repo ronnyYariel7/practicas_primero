@@ -1,6 +1,6 @@
 <?php
 
-use LDAP\Result;
+
 
 /**
  * Funcion que agrega valores usando claves asosiativa
@@ -12,7 +12,7 @@ use LDAP\Result;
  * @param integer $num2
  * @return bool
  */
-function cuantasVeces(array $array ,string $cadena,int $num1 ,int $num2): bool
+function cuantasVeces(array &$array ,string $cadena,int $num1 ,int &$num2): bool
 {
 
 
@@ -36,7 +36,7 @@ function cuantasVeces(array $array ,string $cadena,int $num1 ,int $num2): bool
  * @param integer $longitud
  * @return boolean
  */
-function generarCadenas(int $longitud=10): bool{
+function generarCadenas(int $longitud=10): string|bool{
 
     if($longitud<=0) return false;
 
@@ -49,7 +49,7 @@ function generarCadenas(int $longitud=10): bool{
         $cadena.=$caracteres[$index];
     }
 
-    return true;
+    return $cadena;
 
 }
 /**
@@ -99,5 +99,77 @@ function operaciones(int $op,int $num,int $num2, int ...$resto): int{
 
 }
 
+ /**
+  * Funcio que devuelve el producto de los parametros y cambia el primer
+ * pasado por reeferencia.
+  *
+  * @param integer $num1
+  * @param  $num2
+  * @param integer $num3
+  * @return integer
+  */
+function devuelve(int &$num1,int $num2=10,int $num3=15): int{
+
+    $num1=$num1+$num2+$num3;
+
+    return $num1*$num2*$num3;
+
+}
+
+/**
+ * funcion que recibe una cadena y dos enteros para indicar que tipo
+ * de operación quiere hacer , si la operación no está se devuelve false
+ *
+ * @param string $cadena
+ * @param integer $num1
+ * @param integer $num2
+ * @return boolean
+ */
+function hacerOperacion(string $cadena,int $num1,int $num2): int|false{
+
+    $resul=0;
+    $suma=fn($num1,$num2):int=>$num1+$num2;
+    $resta=fn($num1,$num2):int => $num1-$num2;
+    $multiplicacion=fn($num1,$num2):int => $num1*$num2;
+
+    switch($cadena){
+
+    case "suma":$resul=$suma($num1,$num2);break;
+    case "resta":$resul=$resta($num1,$num2);break;
+    case "multiplicacion":$resul=$multiplicacion($num1,$num2);break;
+        default : return false;
+    }
+
+    return $resul;
+}
+
+
+/** función recibe tres operandos (entero, entero y callable) y que 
+*  devuelve un entero que es el resultado de llamar al parámetro callback con los otros parámetros. 
+ * 
+ *
+ * @param integer $num1
+ * @param integer $num2
+ * @param callable $op
+ * @return integer
+ */
+function llamarAfuncion(int $num1,int $num2, callable $op):int{
+        return $op($num1,$num2);
+}
+
+
+
+/**
+ * A esta función se le pasa un array y lo ordena mediante una llamada a usort, 
+ *al que se indicará como función callback una función anónima que ordenará en orden descendente 
+ *según el número de caracteres de cada elemento. 
+ *
+ * @param  $array
+ * @param  $op
+ * @return void
+ */
+function ordenar(array &$array, callable $op) {
+    return uasort($array,$op);
+}
 
 ?>
