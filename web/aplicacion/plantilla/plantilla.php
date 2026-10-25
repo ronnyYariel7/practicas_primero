@@ -58,7 +58,13 @@ function inicioCuerpo($cabecera,array $ubicacion=[])
         <div id="documento">
         
             <header>
-                <h1 id="titulo"><?php echo $cabecera;?></h1>
+
+                <!-- Enlace con la imagen que lleva al index principal -->
+                <a href="/index.php" title="Ir a la página principal">
+                    <img src="/imagenes/favicon.png" alt="Inicio" style="height: 40px; border: 0;">
+                </a>
+
+           <h1 id="titulo"><?php echo $cabecera;?></h1>
             </header>
             
             <div id="barraLogin">
