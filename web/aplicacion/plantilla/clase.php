@@ -31,30 +31,38 @@ $instancia=new ClasePrueba();
 $instancia->propPublica=50;
 //se accede a la propiedad de clase (estática)
 
+
 ClasePrueba::$propEstatica[1]=10;
-  
+ 
+
 
 class Unica {
     private static bool $_creada=false;
     public int $numero=12;
 
+
     private static ?Unica $_objeto=null;
+
 
     private function __construct(int $val=0)
     {
         $this->numero=12;
     }
 
+
     public static function crear(int $numero):static
     {
         if(self::$_creada)
             return self::$_objeto;
 
+
         self::$_objeto=new static($numero);
     }
 }
 
+
 $usuario=getenv("MYSQL_USER");
+
 
 //dibuja la plantilla de la vista
 inicioCabecera("APLICACION PRIMER TRIMESTRE");
@@ -65,16 +73,22 @@ cuerpo();  //llamo a la vista
 finCuerpo();
 // **********************************************************
 
+
 //vista
-function cabecera() 
+function cabecera()
 {}
+
 
 //vista
 function cuerpo()
 {
 
+
 ?>
-  
+ 
 <?php
 
+
 }
+
+
