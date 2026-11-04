@@ -20,6 +20,10 @@ $barra=[
     [
         "TEXTO"=> "Relación 4",
         "ENLACE"=> "/aplicacion\plantilla/relacion4/index.php"
+    ],
+    [
+        "TEXTO"=> "Relación 5",
+        "ENLACE"=> "/aplicacion\plantilla/relacion5/index.php"
     ]
     
     
