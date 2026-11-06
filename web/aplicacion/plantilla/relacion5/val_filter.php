@@ -54,12 +54,20 @@ function validaReal(float &$var, float $min, float $max, float $defecto):bool{
  
 function validaFecha(string &$var, string $defecto):bool{
     $sw=false;
-    if(preg_match('/^\d{1,2}\/\d{1,2}\/{4}$/',$var)){
+    if(preg_match('/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/',$var,$datosFecha,PREG_OFFSET_CAPTURE)){
 
-        $var=date("d/m/Y",strtotime($var));
-        $datosFecha=mb_split('/^\/$/',$var);
+    //'/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/'
 
-        if(checkdate($datosFecha[0],$datosFecha[1],$datosFecha[2]))$sw=true;
+        $dia=$datosFecha[1][0];
+        $mes=$datosFecha[2][0];
+        $año=$datosFecha[3][0];
+      
+        
+    
+        if(checkdate($dia,$mes,$año)){
+            $var=sprintf("%02d/%02d/%04d",$dia,$mes,$año);
+             $sw=true;
+        }
 
         if(!$sw)$var=$defecto;
 
