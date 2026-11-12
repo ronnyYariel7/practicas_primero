@@ -4,7 +4,7 @@ include_once(dirname(__FILE__) . "/../../../cabecera.php");
 require_once 'MuebleBase.php';
 
 //controlador
-
+//$mueble=new MuebleBase("Mesa","IKEA","italia  ",2023,"14/05/2018","27/06/2029",45);
 
 
 

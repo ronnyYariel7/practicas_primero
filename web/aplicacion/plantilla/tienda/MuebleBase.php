@@ -4,17 +4,38 @@ include("./scripts/libreria/validacion.php");
 
 abstract class MuebleBase {
 
-   public const MAXIMO_MUEBLES=0; //Representa el número máximo de muebles que sepueden crear
-   private int $_mueblesCreados=0; //Número de muebles (instancias) creados hasta el momento.
+   public const MAXIMO_MUEBLES=5; //Representa el número máximo de muebles que sepueden crear
+   private static int $_mueblesCreados=0; //Número de muebles (instancias) creados hasta el momento.
 
    //Propiedades
-    public string $_nombre="";
-    public string $_fabricante="FaMu:";
-    public string $_pais="ESPAÑA";
-    public int $_anio=2020;
-    public string $_fechaIniVenta="01/01/2020";
-    public string $_fechaFinVenta="31/12/2040";
-    public float $_precio=30;
+    private string $_nombre="";
+    private string $_fabricante="FaMu:";
+    private string $_pais="ESPAÑA";
+    private int $_anio=2020;
+    private string $_fechaIniVenta="01/01/2020";
+    private string $_fechaFinVenta="31/12/2040";
+    private float $_precio=30;
+
+    //Constructor
+    public function __construct(string $nombre,string $fabricante,string $pais,int $anio,
+        string $fechaIniVenta,string $fechaFinVenta,float $precio)
+    {
+        try{
+            if(!($this->setNombre($nombre))) throw new Error("El Campo Nombre es Obligatorio");
+            $this->setFabircante($fabricante);
+            $this->setPais($pais);
+            $this->setAnio($anio);
+            $this->setFechaIniVenta($fechaIniVenta);
+            $this->setFechaFinVenta($fechaFinVenta);
+            $this->setPrecio($precio);
+
+            $this->_mueblesCreados++;
+        }
+        catch(Exception $e){
+            echo "Error:". $e->getMessage();
+        }
+       
+    }
 
 
 
@@ -85,22 +106,96 @@ abstract class MuebleBase {
         $estado=true;
         $fechaFabricacion=new DateTime('01/01/'.$this->_anio);
       try{
-         $fechaNueva=new DateTime($fecha);
+         $fechaNueva=new DateTime(str_replace("/","-",$fecha));
 
         if($fechaNueva<$fechaFabricacion)$estado=false;
         else $this->_fechaIniVenta=$fechaNueva->format("d/m/Y");
       }
-     catch(error){
+     catch(Exception $e){
         $this->_fechaIniVenta=$fechaFabricacion->format("d/m/Y");
      }
 
         return $estado;
 
-        }
+     }
+
+    //Cambiar FechaFinVenta cadena-fecha, fecha en la que dejará de venderse,
+    //no puede ser anterior a la FechaIniVenta, por defecto 31/12/2040’) 
+    public function setFechaFinVenta(string $fechaFin):bool{
+            $estado=true;
+            $fechaFin=mb_trim($fechaFin);
+            $fechaIn=new DateTime($this->_fechaIniVenta);
+            $fechaFinal=new DateTime(str_replace("/","-",$fechaFin));
+
+            if($fechaIn>$fechaFinal){
+                $estado=false;
+                $this->_fechaIniVenta="31/12/2040";
+            }
+            else   $this->_fechaIniVenta=$fechaFin;
+
+            return $estado;
+            
     }
 
+    //Cambiar Precio (real, por defecto 30, no puede ser menor de 30).
 
+    public function setPrecio(float $precio):bool {
+        $estado=true;
 
+        if($precio<30)$estado=false;
+        else $this->_precio=$precio;
 
+        return $estado;
+    }
+
+    /**
+     * Será redefinido en las clases hijas y devolverá
+     *un array con el nombre de las propiedades adicionales a la clase base. 
+     *
+     * @return array
+     */
+    public function damePropiedadesAdicionales():array
+        {
+            return [];
+        }
+
+        /**
+         *  devuelve true si se pueden crear más instancias de la
+         * clase y false en caso contrario. Además, devuelve en el parámetro Número el número de
+         *muebles que aún se pueden crear de la clase.
+         *
+         * @param integer $numero
+         * @return boolean
+         */
+    public static function puedeCrear(int &$numero):bool
+    {
+        $puedeCrear=self::MAXIMO_MUEBLES-self::$_mueblesCreados;
+
+        if($puedeCrear==0){
+            $numero=$puedeCrear;
+            return false;
+        }
+
+        $numero=$puedeCrear;
+        return true;
+
+    }
+
+    /**
+     * Método toString
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+       return "MUEBLE de clase ".
+                 $this::class ."con nombre {$this->_nombre}, fabricante {$this->_fabricante}, fabricado en {$this->_pais} 
+                 a partir del año {$this->_anio}, vendido desde {$this->_fechaIniVenta} hasta 
+                 {$this->_fechaFinVenta}, precio {$this->_precio}.";
+    }
+
+    }
+
+  
 
 ?>
