@@ -6,6 +6,8 @@ abstract class MuebleBase {
 
    public const MAXIMO_MUEBLES=5; //Representa el número máximo de muebles que sepueden crear
    private static int $_mueblesCreados=0; //Número de muebles (instancias) creados hasta el momento.
+   
+
 
    //Propiedades
     private string $_nombre="";
@@ -15,10 +17,11 @@ abstract class MuebleBase {
     private string $_fechaIniVenta="01/01/2020";
     private string $_fechaFinVenta="31/12/2040";
     private float $_precio=30;
+    private Caracteristicas $_caracteristicas;
 
     //Constructor
     public function __construct(string $nombre,string $fabricante,string $pais,int $anio,
-        string $fechaIniVenta,string $fechaFinVenta,float $precio)
+        string $fechaIniVenta,string $fechaFinVenta,float $precio ,Caracteristicas $caracteristicas)
     {
         try{
             if(!($this->setNombre($nombre))) throw new Error("El Campo Nombre es Obligatorio");
@@ -28,7 +31,7 @@ abstract class MuebleBase {
             $this->setFechaIniVenta($fechaIniVenta);
             $this->setFechaFinVenta($fechaFinVenta);
             $this->setPrecio($precio);
-
+            $this->_caracteristicas=$caracteristicas;
             $this->_mueblesCreados++;
         }
         catch(Exception $e){
@@ -194,8 +197,23 @@ abstract class MuebleBase {
                  {$this->_fechaFinVenta}, precio {$this->_precio}.";
     }
 
+
+    /**
+     * Método para agregar Caracteristicas
+     */
+    public function anadirCaracteristica(...$parametros){
+
+        $carac=[];
+        for($i=0;$i<count($parametros);$i+=2){
+           $clave=$parametros[$i];
+           $valor=$parametros[$i+1];
+
+           $carac[$clave]=$valor;
+        }
+
+        $this->_caracteristicas->agregarCaracteriticas($carac);
     }
 
-  
+    }
 
 ?>
