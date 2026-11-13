@@ -208,7 +208,7 @@ abstract class MuebleBase {
            $clave=$parametros[$i];
            $valor=$parametros[$i+1];
 
-           $carac[$clave]=$valor;
+           $carac[$clave]=$valor; 
         }
 
         $this->_caracteristicas->agregarCaracteriticas($carac);
