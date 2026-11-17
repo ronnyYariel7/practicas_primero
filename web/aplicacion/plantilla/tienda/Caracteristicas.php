@@ -12,15 +12,12 @@ private bool $_bloquear=false;// Bloquear Caracteristicas
                 $this->_bloquear=true;
 
                 $this->$nombrePropiedades=$valor;
-
                }
-
                try {
 
                 if(!$this->_bloquear)$this->$nombrePropiedades=$valor;
                 else throw new Error("No se pueden agregar más Carcateristicas");
                }
-
                catch(Exception $e){
 
                     echo "Error".$e->getMessage();
