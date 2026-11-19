@@ -130,3 +130,18 @@ body {
     display: block;
     font-weight: 500;
 }
+
+.mi-textarea {
+    display: block;
+    width: 100%;
+    max-width: 420px;
+    min-height: 180px;
+    margin: 30px auto;
+    padding: 20px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    font-family: system-ui, -apple-system, sans-serif;
+    box-sizing: border-box;
+}

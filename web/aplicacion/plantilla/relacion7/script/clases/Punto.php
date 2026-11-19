@@ -42,14 +42,14 @@ class Punto{
 
     //Cambia propiedadad $_x entero, entre 0 y 20000
     public function setX(int $x){
-        if($x>0 || $x<20000)return false;
+        if($x<0 || $x>20000)return false;
         $this->_x=$x;
         return true;
     }
 
      //Cambia propiedadad $_y entero, entre 0 y 20000
     public function setY(int $y){
-        if($y>0 || $y<20000)return false;
+        if($y<0 || $y>20000)return false;
         $this->_y=$y;
         return true;
     }
@@ -67,6 +67,21 @@ class Punto{
         if(!(array_key_exists($grosor,self::GROSORES)))return false;
         $this->_grosor=$grosor;
         return true;
+    }
+
+    //Métodos Getters
+
+    public function getColores(){return self::COLORES;}
+    public function getGrosores(){return self::GROSORES;}
+    public function getX(){return $this->_x;}
+    public function getY(){return $this->_y;}
+    public function getColor(){return $this->_color;}
+    public function getGrosor(){return self::GROSORES[$this->_grosor];}
+   
+    //Método toString
+    public function __toString()
+    {
+        return "({$this->getX()}X,{$this->getY()}Y)-color:{$this->getColor()}-grosor:{$this->getGrosor()}";
     }
 }
 
