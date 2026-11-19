@@ -1,7 +1,8 @@
 <?php 
-include_once(dirname(__FILE__) . "../../../../cabecera.php");
+
 include_once "script/clases/Punto.php";
 //controlador
+
 $barra=[
     [
     "TEXTO"=> "inicio",
@@ -13,20 +14,33 @@ $barra=[
     ],
 
 ];
+$puntos=[];
 
-
-$puntos=[new Punto(20,30,"black",1),new Punto(50,60,"blue",2),new Punto(40,10,"red",3)];
-
+//Leemos el fichero
+leerFichero($puntos);
 if(isset($_POST["crearPunto"]))
 {
   $cordenadaX=intval($_POST["cordenadaX"]);
-  $cordenadaY=intval($_POST["cordenadaY"]);
+  $cordenadaY=intval($_POST["cordenadaY"]); 
   $color=$_POST["selectColores"];
   $grosor=intval($_POST["grosor"]);
 
   $puntos[]=new Punto($cordenadaX,$cordenadaY,$color,$grosor);
+  escribirFichero($puntos);
+  header("Location: " . $_SERVER["PHP_SELF"]); exit;
+}
+
+//Al precionar el Botón del formulario se eliminara el Punto
+//que seleciono el usuario
+if(isset($_POST["btEliminar"]))
+{
+    $punto=$_POST["borrarPunto"];
+    leerFichero($puntos,$punto);
+    escribirFichero($puntos);
 
 }
+include_once(dirname(__FILE__) . "../../../../cabecera.php");
+
 
 
 
@@ -50,6 +64,8 @@ function cuerpo(array $puntos)
     <h2>Agregar las Cordenadas X y Y en el Formulario</h2><br> 
     <?php 
          cordenandasFormulario();
+    ?><h2>Eliminar Punto</h2><?php
+        borrarPunto($puntos);
     ?><h2>Puntos Registrados</h2><?php
          visualizarPuntos($puntos);
     ?><h2>Imagen Puntos</h2><?php
@@ -148,7 +164,7 @@ function ipUsuario():string{
 /**
  * Creamos las Imagenes de Cada Punto
  *
- * @param Punto $punto
+ * @param array $puntos
  * @return void
  */
 function crearImagen(array $puntos){
@@ -196,4 +212,107 @@ function agregarImagen(array $puntos){
        
     <?php
     
+}
+
+/**
+ * Nombre de archivo: $nombre_dirip_navegador.$formato
+ *
+ * @param string $nombre
+ * @param string $formato
+ * @return string
+ */
+function nombreFichero(string $nombre,string $formato):string
+{
+    return $nombre."_".ipUsuario()."_".navegadorUsado().".".$formato;
+}
+
+function escribirFichero(array $datos){
+
+    $ruta="ficheros/";
+
+    if(!file_exists($ruta))mkdir($ruta);
+
+    $ruta.=nombreFichero("puntos","dat");
+
+    $fichero=fopen($ruta,"w");
+    if(!$fichero)return false;
+
+    $linea="";
+    foreach($datos as $obj){
+       $linea=trim($obj->__toString())."\n";
+
+       fputs($fichero,$linea); //escribimos en el Fichero
+    }
+
+    //Cerrar el fichero
+    fclose($fichero);
+    return true;
+
+}
+
+/**
+ * lee los archivos se le pasa un array por 
+ * referencias para obtener el contenido del fichero
+ */
+
+function leerFichero(array &$datos,string $borrar=""){
+
+      $ruta="ficheros/";
+
+    if(!file_exists($ruta))mkdir($ruta);
+
+    $ruta.=nombreFichero("puntos","dat");
+
+    $fichero=fopen($ruta,"r");
+    if(!$fichero)return false;
+
+    //borrar el contenido del array
+   $datos=[];
+    while($linea=fgets($fichero))
+        {
+            $linea=mb_trim(preg_replace("/[\n]/","",$linea));
+            $arrayDatos=explode(";",$linea);
+
+            //comprobamos que linea sea diferende de cadena vacia
+            if($linea!=""){
+
+            //recogemos el array grosores para pasar el parametro como entero al crear el Punto
+            $arrayGrosor=new Punto(2,3,"black",1)->getGrosores(); 
+            $punto=new Punto(intval($arrayDatos[0]),intval($arrayDatos[1]),
+                                $arrayDatos[2],array_search($arrayDatos[3],$arrayGrosor));
+            
+            //Si borrar es igual a punto quiere decir que el usuario quiere borrar un punto
+            //y no se agregara al array , si son distintos se agrega a datos[]
+            if($borrar!==$punto->__toString()){
+                $datos[]=$punto;
+            }
+         
+            }
+        }
+    
+        //cerramos el fichero
+        fclose($fichero);
+        return true;
+
+}
+
+/**
+ * Función que contiene el formulario
+ * para borrar Puntos
+ *
+ * @param array $datos
+ * @return void
+ */
+function borrarPunto(array $datos){
+    ?><form action="" method="post" class="mi-formulario">
+        <select name="borrarPunto" id="">
+        <?php $cont=1;
+            foreach($datos as $punto){
+        ?>
+            <option value="<?=$punto->__toString()?>">Punto<?=$cont?>:<?= $punto->__toString() ?></option>
+         <?php $cont++; } ?>
+        </select>
+        <button type="submit" name="btEliminar">Borrar</button>
+    </form>
+    <?php
 }

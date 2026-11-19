@@ -81,7 +81,7 @@ class Punto{
     //Método toString
     public function __toString()
     {
-        return "({$this->getX()}X,{$this->getY()}Y)-color:{$this->getColor()}-grosor:{$this->getGrosor()}";
+        return "{$this->getX()};{$this->getY()};{$this->getColor()};{$this->getGrosor()}";
     }
 }
 
