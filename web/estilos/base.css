@@ -145,3 +145,8 @@ body {
     font-family: system-ui, -apple-system, sans-serif;
     box-sizing: border-box;
 }
+.ok {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #28a745;
+ }

@@ -9,11 +9,7 @@ $barra=[
     "TEXTO"=> "inicio",
     "ENLACE"=>"/index.php",
     ],
-    [
-        "TEXTO"=> "cadenas",
-        "ENLACE"=> "C:/Web/Practicas-Primeros/web/aplicacion/plantilla/cadenas.php"
-    ],
-
+ 
 ];
 $puntos=[];
 
@@ -28,7 +24,7 @@ if(isset($_POST["crearPunto"]))
 
   $puntos[]=new Punto($cordenadaX,$cordenadaY,$color,$grosor);
   escribirFichero($puntos);
-  header("Location: " . $_SERVER["PHP_SELF"]); exit;
+   header("Location: index.php");
 }
 
 //Al precionar el Botón del formulario se eliminara el Punto
@@ -39,6 +35,23 @@ if(isset($_POST["btEliminar"]))
     leerFichero($puntos,$punto);
     escribirFichero($puntos);
 
+}
+
+if(isset($_POST["btSubir"]))
+{
+    $direccionSubida="ficheros/";
+     $nombreCompleto=$_FILES["archivo"]["name"];
+    $archivoSubido=$direccionSubida.basename($nombreCompleto);
+
+    if(!(move_uploaded_file($_FILES["archivo"]["tmp_name"],$archivoSubido))){
+        throw new Error("No se Pudo Subir el Archivo");
+    }else {
+       
+        $contenido=leerArchivoSubido($nombreCompleto);
+       escribirArchivoPuntosDat("puntos","dat" ,$contenido);
+        
+    header("Location: index.php"); exit();
+   }
 }
 include_once(dirname(__FILE__) . "../../../../cabecera.php");
 
@@ -71,7 +84,9 @@ function cuerpo(array $puntos)
          visualizarPuntos($puntos);
     ?><h2>Imagen Puntos</h2><?php
         agregarImagen($puntos);
-
+    ?><h2>Subir un Archivo</h2> <?php
+        formSubirArchivo();
+        
 
 }
 

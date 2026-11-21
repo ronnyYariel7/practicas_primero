@@ -200,6 +200,9 @@ function escribirFichero(array $datos){
 
     $ruta.=nombreFichero("puntos","dat");
 
+    //No comprobamos si el arhcivo exites por que "w" lo crea
+    // en la ruta indicada si no existe
+
     $fichero=fopen($ruta,"w");
     if(!$fichero)return false;
 
@@ -228,6 +231,10 @@ function leerFichero(array &$datos,string $borrar=""){
     if(!file_exists($ruta))mkdir($ruta);
 
     $ruta.=nombreFichero("puntos","dat");
+
+    //si el archivo no estiste el array se queda vacio y fopen
+    // no lanza error al abrir un archivo que no existe
+    if(!file_exists($ruta))return false;
 
     $fichero=fopen($ruta,"r");
     if(!$fichero)return false;
@@ -281,4 +288,53 @@ function borrarPunto(array $datos){
         <button type="submit" name="btEliminar">Borrar</button>
     </form>
     <?php
+}
+
+
+/**
+ * funcion que crea el formulario para poder 
+ * subir un archivo con puntos creados 
+ *
+ * @return void
+ */
+function formSubirArchivo(){
+    ?>
+    <form action="" enctype="multipart/form-data" method="post" class="mi-formulario">
+          <input type="hidden" name="MAX_FILE_SIZE" value="30000">
+          <label for="">Subir este Archivo</label>
+          <input name="archivo"type="file"/><br>
+          <input type="submit" name="btSubir">
+    </form>
+
+    <?php
+}
+
+/**
+ * Función que recoge todo el contenido del archivo
+ * que el usuario subio
+ *
+ * @param string $nombre
+ * @return string
+ */
+function leerArchivoSubido(string $nombre):string{
+    $ruta="ficheros/".$nombre;
+
+    $contenido=file_get_contents($ruta);
+    return $contenido;
+}
+/**
+ * Funcion que actualiza el archivo .dat con el archivo de puntos
+ * que subio el usuario 
+ *
+ * @param string $nombre
+ * @param string $formato
+ * @param mixed $contenido
+ * @return void
+ */
+function escribirArchivoPuntosDat(string $nombre,string $formato ,mixed $contenido){
+    $ruta="ficheros/".nombreFichero($nombre,$formato);
+    //Uso File_Append para no me borre los puntos que ya tengo en el archivo
+    //en la ruta indicada
+    if(!(file_put_contents($ruta,$contenido,FILE_APPEND)))return false;
+    return true;
 }
